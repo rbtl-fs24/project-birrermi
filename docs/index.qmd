@@ -1,0 +1,38 @@
+---
+title: "The recycling habits ont the ETH-Campus of ETH-Students"
+date: today
+author:
+  - name: Michael Birrer
+    orcid: 0009-0005-9815-0692
+    email: birrermi@student.ethz.ch
+    affiliation: 
+      - name: ETH Zurich
+        url: https://ethz.ch/de.html
+abstract: 
+  The abstract will be placed here. Breaks can be added by hitting return on the keyboard.
+license: "CC BY"
+citation: 
+  container-title: My Blog
+  url: https://www.example.com
+bibliography: references.bib
+csl: apa.csl
+editor: visual
+---
+
+# Introduction
+
+Introduction section with 3 to 5 sentences introduces the context within which the data was created.
+
+# Methods
+
+Methods section describes in 3 to 5 sentences how the data was obtained.
+
+# Results
+
+Figures and tables in Results section are interpreted with 2 to 3 sentences each.
+
+# Conclusion
+
+Conclusions concisely summarize findings in a bullet point format.
+
+# References
