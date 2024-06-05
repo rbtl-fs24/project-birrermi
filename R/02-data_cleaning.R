@@ -1,4 +1,5 @@
 library(tidyverse)
+library(dplyr)
 
 #import data
 survey_processed <- survey_raw <- read.csv("data/raw/survey_raw.csv")
@@ -54,6 +55,13 @@ survey_processed$enrollment_status[survey_processed$ID == 3] <- "Phd"
 survey_processed$purpose[survey_processed$ID == 4] <- "Study"
 survey_processed$enrollment_status[survey_processed$ID == 4] <- "Phd"
 
+#changin aluminum, aluminum cans, alu to just ALU
+survey_processed <- survey_processed |> 
+  mutate(most_recycled_material_ETH_Zentrum = gsub("^alu\\w*", "ALU", most_recycled_material_ETH_Zentrum, ignore.case = TRUE))
+survey_processed <- survey_processed |> 
+  mutate(most_recycled_material_ETH_Zentrum = gsub("^ALU cans\\w*", "ALU", most_recycled_material_ETH_Zentrum, ignore.case = TRUE))
+survey_processed <- survey_processed |> 
+  mutate(most_recycled_material_ETH_Zentrum = na_if(most_recycled_material_ETH_Zentrum, "this is to see if longer answers are accepted, also, 14"))
 write_csv(survey_processed, "data/processed/survey_processed.csv" )
 
-glimpse(survey_processed)
+

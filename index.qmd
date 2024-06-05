@@ -23,6 +23,7 @@ editor: visual
 ---
 
 ```{r}
+
 library(tidyverse)
 library(dplyr)
 ```
@@ -79,9 +80,18 @@ recyclingrate_eth_hönggerberg <- pie(counts_eth_hönggerberg,
 
 ## What do they recycle?
 
+```{r}
+survey_processed <- read.csv("data/processed/survey_processed.csv")
+
+
+ggplot(data = survey_processed,
+       mapping = aes(x = most_recycled_material_ETH_Zentrum)) +
+  geom_bar()
+```
+
 ## How happy are the people on campus about the given infrastructure?
 
-in the end of the survey the participants were asked to give a rating from 1-10 oin how happy they are with the given infrastructure. As seen in ... the participants are quite happy with the given infrastructure. The infrastructure on Höngerberg was rated a bit higher but also had not to much participants for a reliable conclusion.
+in the end of the survey the participants were asked to give a rating from 1-10 on how happy they are with the given infrastructure. As seen in ... the participants are quite happy with the given infrastructure. The infrastructure on Höngerberg was rated a bit higher but also had not to much participants for a reliable conclusion.
 
 ```{r}
 
