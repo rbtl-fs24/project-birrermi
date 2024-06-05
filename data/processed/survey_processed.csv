@@ -1,0 +1,18 @@
+Timestamp,ID,campus,purpose,enrollment_status,department,work_status,visit_status,visits_per_week,recycling_ETH_Zentrum,hindrance_ETH_Zentrum,recycling_materials_ETH_Zentrum,frequency_ETH_Zentrum,most_recycled_material_ETH_Zentrum,satisfaction_ETH_Zentrum,favourite_spot_ETH_Zentrum,improvement_ETH_Zentrum,recycling_ETH_Hönggerberg,hindrance_ETH_Hönggerberg,recycling_materials_ETH_Hönggerberg,frequency_ETH_Hönggerberg,most_recycled_material_ETH_Hönggerberg,satisfaction_ETH_Hönggerberg,favourite_spot_ETH_Hönggerberg,improvement_ETH_Hönggerberg
+2024-05-16T12:40:03Z,1,ETH-Höngerberg,Study,Bachelor,D-MAVT,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,yes,NA,Cardboard,4-5 times a week,Everything,8,Both,Glass recycling
+2024-05-19T18:05:36Z,2,ETH-Höngerberg,Study,Master,D-​BAUG,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,yes,NA,"PET, Glass, Paper, aluminium",daily,pet,9,in front of alumni the different trash bins,Can't think about something right now
+2024-05-16T12:32:41Z,3,ETH-Höngerberg,Study,Phd,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,no,22,NA,NA,NA,NA,NA,NA
+2024-05-22T09:42:52Z,4,ETH-Höngerberg,Study,Phd,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,yes,NA,"PET, Paper, Cardboard",daily,"Paper, Plastics, Cardboard",8,In front of the Coop,"In my opinion, the visibility and knowledge about the recycling services could be increased."
+2024-05-16T12:30:18Z,5,ETH-Zentrum,Study,Bachelor,D-MAVT,NA,NA,5,yes,NA,"PET, Paper, Electronics",2-3 times a week,Batteries,7,PET bins on the hallways,more signs/increased awareness,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-16T12:35:06Z,6,ETH-Zentrum,Study,Bachelor,D-MAVT,NA,NA,5,yes,NA,"PET, Paper",daily,alu,5,the grey bins with three compartments,"Providing more of them and at better locations! i.e. an Alu bin inside of the library, so people don't through their mate in the general waste there already",NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-30T18:39:09Z,7,ETH-Zentrum,Study,Bachelor,D-MAVT,NA,NA,1,yes,NA,"PET, Glass, Aluminium Cans",once a week,Aluminium Cans,7,Main Building,More Recycling bins,NA,NA,NA,NA,NA,NA,NA,NA
+2024-06-03T20:44:41Z,8,ETH-Zentrum,Study,Bachelor,D-MAVT,NA,NA,3,yes,NA,PET,2-3 times a week,PET,8,HG-main floor,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-16T11:36:04Z,9,ETH-Zentrum,Study,Master,D-MTEC,NA,NA,2,no,I only prepare my own food and do not buy a lot of stuff.,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-16T12:37:35Z,10,ETH-Zentrum,Study,Master,D-MATH,NA,NA,5,yes,NA,"PET, Paper, aluminum",daily,Aluminium cans,8,HG,Add aluminium and organic bins,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-16T12:38:51Z,11,ETH-Zentrum,Study,Master,D-MAVT,NA,NA,5,yes,NA,"PET, Glass, Paper, Cardboard",daily,"this is to see if longer answers are accepted, also, 14",7,The PET/Aluminium recycling bins everywhere,more glass and paper recycling points,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-16T12:39:36Z,12,ETH-Zentrum,Study,Master,D-MAVT,NA,NA,4,yes,NA,"PET, Paper, Cardboard",4-5 times a week,Papier,6,GLC,no glass containers,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-30T13:13:43Z,13,ETH-Zentrum,Study,Master,D-MAVT,NA,NA,5,yes,NA,"PET, Glass, Paper, Cardboard",2-3 times a week,aluminum,8,HG,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-30T13:24:59Z,14,ETH-Zentrum,Study,Master,D-MAVT,NA,NA,2,yes,NA,"PET, Paper",once a week,PET,8,HG,More frequent bins,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-30T13:27:24Z,15,ETH-Zentrum,Study,Master,D-MAVT,NA,NA,5,yes,NA,"PET, aluminium",2-3 times a week,alu,4,cla,recycling in rooms,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-30T14:32:48Z,16,ETH-Zentrum,Study,Master,D-MAVT,NA,NA,5,no,Availability in rooms,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2024-05-16T12:40:55Z,17,ETH-Zentrum,Work,NA,NA,NA,NA,2,yes,NA,"PET, Glass, Paper, Cardboard",daily,Cardboard,7,"In ML building, the recycling bins in our offices",No biowaste recycling that I know of,NA,NA,NA,NA,NA,NA,NA,NA
