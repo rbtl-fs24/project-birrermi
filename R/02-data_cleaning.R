@@ -56,4 +56,4 @@ survey_processed$enrollment_status[survey_processed$ID == 4] <- "Phd"
 
 write_csv(survey_processed, "data/processed/survey_processed.csv" )
 
-
+glimpse(survey_processed)

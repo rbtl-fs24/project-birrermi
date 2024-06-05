@@ -1,0 +1,26 @@
+variable name,description
+Timestamp,date and time on which the data was collected
+ID,assigns a identification number to a participant of the study
+campus,describes on which campus the participant is the most of his time: either on zentrum or hönggerberg
+purpose,"describes the purpose of visit to the eth campus : either for study, work or other"
+enrollment_status,describes the enrollment status if a person is studying at ETH
+department,describes in which department someone is studying
+work_status,describes what job someone is doing when his purpose of visiting eth is for work
+visit_status,describes why someone is visiting the eth campus if not for study or work
+visits_per_week,describes on how many times someone visits the eth campus in days per week from 0-7 days
+recycling_ETH_Zentrum,describes if someone is recycling on eth-zentrum campus or not
+hindrance_ETH_Zentrum,describes why someone doesnt recycle on eth- zentrum campus
+recycling_materials_ETH_Zentrum,describes which materials someone recycles on eth-zentrum campus
+frequency_ETH_Zentrum,describes how often someon recycles on the eth-zentrum campus per week
+most_recycled_material_ETH_Zentrum,describes which material someone recycles the most on eth-zentrum campus
+satisfaction_ETH_Zentrum,describes how happy someone is with the given recycling infrastructure on eth-zentrum campus from a scale from 1-10
+favourite_spot_ETH_Zentrum,describes the favourite recycling spot on eth-zentrum campus
+improvement_ETH_Zentrum,describes if there is a improvement suggestion for the given recycling structure of eth-zentrum campus
+recycling_ETH_Hönggerberg,describes if someone is recycling on eth-hönggerbergcampus or not
+hindrance_ETH_Hönggerberg,describes why someone doesnt recycle on eth- hönggerberg campus
+recycling_materials_ETH_Hönggerberg,describes which materials someone recycles on eth-hönggerberg campus
+frequency_ETH_Hönggerberg,describes how often someon recycles on the eth-hönggerberg campus per week
+most_recycled_material_ETH_Hönggerberg,describes which material someone recycles the most on eth-hönggerberg campus
+satisfaction_ETH_Hönggerberg,describes how happy someone is with the given recycling infrastructure on eth-hönggerberg campus from a scale from 1-10
+favourite_spot_ETH_Hönggerberg,describes the favourite recycling spot on eth-hönggerberg campus
+improvement_ETH_Hönggerberg,describes if there is a improvement suggestion for the given recycling structure of eth-hönggerberg campus

@@ -1,0 +1,149 @@
+---
+title: "Recycling behaviour on the ETH-campuses"
+date: today
+author:
+  - name: Michael Birrer
+    orcid: 0009-0005-9815-0692
+    email: birrermi@student.ethz.ch
+    affiliation: 
+      - name: ETH Zurich
+        url: https://ethz.ch/de.html
+abstract: 
+  This study aims to get a better insight of the recycling behaviour of the people visiting the ETH-campuses.
+  Do they recycle?
+  What do they recycle?
+  And how happy are they with the given recycling infrastructure?
+license: "CC BY"
+citation: 
+  container-title: My Blog
+  url: https://www.example.com
+bibliography: birrermi.bib
+csl: apa.csl
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+# Introduction
+
+This study aims to get insights of the recycling behavior of peoples visiting the ETH-campuses. By understanding the extent to which visitors utilize the provided recycling infrastructure and how satisfied they are with the existing infrastructure, we can identify potential areas for improvement. Furthermore, the study seeks to uncover the types of materials commonly recycled on campus, providing valuable insights into the recycling habits and preferences of the campus community. This data will serve as a foundation for developing targeted strategies to enhance recycling practices for a more sustainable campus environment, which could also be implemented beyond the campus as universities also work good as a test group for the general public [@kelly2006universitya]
+
+# Methods
+
+The data was collected through a Google Forms questionnaire distributed to students. The questionnaire was designed to gather relevant information and was shared with the target student population. The participants were firstly asked of the campus they visited the most and after that got more questions about the beforehand chosen campus. The collected data was then exported from Google Forms for further analysis and processing.
+
+# Results
+
+## Do people recycle on campus?
+
+The percentage of participants that recycles on campus is high as seen in fig... for the ETH-Zentrum campus and fig ...for the ETH-Hönggerberg campus.
+
+The contribution on recycling is slightly higher on the Zentrum-campus.
+
+The participants who dont recycle were also asked what hinders them on recycling on campus and they given the following statements:
+
+-   ETH-Zentrum:
+
+    -   I only prepare my own food and do not buy a lot of stuff.
+
+    -   Bad availability in rooms
+
+-   ETH-Hönggerberg:
+
+    -   no statement
+
+```{r}
+
+survey_processed <- read.csv("data/processed/survey_processed.csv")
+
+counts_eth_zentrum <- table(survey_processed$recycling_ETH_Zentrum)
+percentages_eth_zentrum <- round(counts_eth_zentrum/sum(counts_eth_zentrum)*100, 1)
+
+recyclingrate_eth_zentrum <- pie(counts_eth_zentrum, 
+    labels = paste0(names(counts_eth_zentrum), " (", percentages_eth_zentrum, "%)"),
+    col = c("green", "red"),
+    main = "On campus recyclingrate: ETH-Zentrum")
+
+
+counts_eth_hönggerberg <- table(survey_processed$recycling_ETH_Hönggerberg)
+percentages_eth_hönggerberg <- round(counts_eth_hönggerberg/sum(counts_eth_hönggerberg)*100, 1)
+
+recyclingrate_eth_hönggerberg <- pie(counts_eth_hönggerberg, 
+    labels = paste0(names(counts_eth_hönggerberg), " (", percentages_eth_hönggerberg, "%)"),
+    col = c("green", "red"),
+    main = "On campus recyclingrate: ETH-Hönggerberg")
+```
+
+## What do they recycle?
+
+## How happy are the people on campus about the given infrastructure?
+
+in the end of the survey the participants were asked to give a rating from 1-10 oin how happy they are with the given infrastructure. As seen in ... the participants are quite happy with the given infrastructure. The infrastructure on Höngerberg was rated a bit higher but also had not to much participants for a reliable conclusion.
+
+```{r}
+
+survey_processed <- read.csv("data/processed/survey_processed.csv")
+mean_satisfaction_zentrum <-survey_processed |> 
+  filter(!is.na(satisfaction_ETH_Zentrum))  |> 
+    group_by(campus) |> 
+    summarise(
+        count = n(),
+        mean = mean(satisfaction_ETH_Zentrum)
+        )
+       
+mean_satisfaction_hönggerberg <-survey_processed |> 
+  filter(!is.na(satisfaction_ETH_Hönggerberg))  |> 
+    group_by(campus) |> 
+    summarise(
+        count = n(),
+        mean = mean(satisfaction_ETH_Hönggerberg)
+        )
+
+satisfaction <- bind_rows(mean_satisfaction_hönggerberg,mean_satisfaction_zentrum)
+
+satisfaction |> 
+knitr::kable(digits = 0)
+
+write_csv(satisfaction, "data/final/tbl-satisfaction")
+```
+
+After the rating the participants were asked what could be improved in terms of the given recycling infrastructure.
+
+For improvements the participants suggested the following statements:
+
+-   ETH-Zentrum campus:
+
+    -   more signs/increased awareness
+
+    -   Providing more of them and at better locations! i.e. an Alu bin inside of the library, so people don't through their mate in the general waste there already
+
+    -   Add aluminium and organic bins
+
+    -   more glass and paper recycling points
+
+    -   no glass containers
+
+    -   No biowaste recycling that I know of
+
+    -   More frequent bins
+
+    -   recycling in rooms
+
+    -   More Recycling bins
+
+-   ETH-Hönggerberg campus:
+
+    -   Glass recycling
+
+    -   In my opinion, the visibility and knowledge about the recycling services could be increased.
+
+    -   no improvements necessary
+
+# Conclusion
+
+Conclusions concisely summarize findings in a bullet point format.
+
+# References
