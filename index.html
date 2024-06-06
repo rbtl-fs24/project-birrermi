@@ -145,39 +145,22 @@ div.csl-indent {
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Switzerland is one of the leading country in terms of waste per capita with an high waste of over 700kg per capita. Despite this big waste production the recyclingrate increased sevenfold over the past 50 years <span class="citation" data-cites="misicka2020how">(<a href="#ref-misicka2020how" role="doc-biblioref">Misicka, 2020</a>)</span></p>
+<p>Switzerland is one of the leading country in terms of waste per capita with a high waste of over 700kg per capita. Despite this big waste production the recyclingrate increased sevenfold over the past 50 years <span class="citation" data-cites="misicka2020how">(<a href="#ref-misicka2020how" role="doc-biblioref">Misicka, 2020</a>)</span></p>
 <p>This study aims to get insights of the recycling behavior of peoples visiting the ETH-campuses. By understanding the extent to which visitors utilize the provided recycling infrastructure and how satisfied they are with the existing infrastructure, we can identify potential areas for improvement. Furthermore, the study seeks to uncover the types of materials commonly recycled on campus, providing valuable insights into the recycling habits and preferences of the campus community.</p>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
-<p>The data was collected through a Google Forms questionnaire distributed to students. The questionnaire was designed to gather relevant information and was shared with the target student population. The participants were firstly asked of the campus they visited the most and after that got more questions about the beforehand chosen campus. The collected data was then exported from Google Forms for further analysis and processing.</p>
+<p>The data was collected through a Google Forms questionnaire distributed to students. The questionnaire was designed to gather relevant information and was shared with the target student population. The participants were firstly asked of the campus they visit the most and after that got more questions about the beforehand chosen campus. The collected data was then exported from Google Forms for further analysis and processing.</p>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
 <p>There was a total of 17 participants in the survey, from which 13 visit mainly the Zentrum campus and 4 visitting the Hönggerberg campus.</p>
+<p>In the following chapters the results of the main questions are described.</p>
 <section id="do-people-recycle-on-campus" class="level2">
 <h2 class="anchored" data-anchor-id="do-people-recycle-on-campus">Do people recycle on campus?</h2>
-<p>The percentage of participants that recycles on campus is high as seen in <a href="#fig-zentrum" class="quarto-xref">Figure&nbsp;1</a> for the ETH-Zentrum campus and in <a href="#fig-hönggerberg" class="quarto-xref">Figure&nbsp;2</a> the ETH-Hönggerberg campus.</p>
+<p>The percentage of participants that recycles on campus is high as seen in <a href="#fig-zentrum" class="quarto-xref">Figure&nbsp;1</a> for the ETH-Zentrum campus and in <a href="#fig-hönggerberg" class="quarto-xref">Figure&nbsp;2</a> for the ETH-Hönggerberg campus.</p>
 <p>The contribution on recycling is slightly higher on the Zentrum-campus.</p>
 <p>The participants who dont recycle were also asked what hinders them on recycling on campus and they given the following statements:</p>
 <ul>
@@ -185,26 +168,26 @@ div.csl-indent {
 <ul>
 <li><p>I only prepare my own food and do not buy a lot of stuff.</p></li>
 <li><p>Bad availability in rooms</p></li>
-</ul></li>
-<li><p>ETH-Hönggerberg:</p>
+</ul>
+<p>ETH-Hönggerberg:</p>
 <ul>
 <li>no statement</li>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>survey_processed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/processed/survey_processed.csv"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>counts_eth_zentrum <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_processed<span class="sc">$</span>recycling_ETH_Zentrum)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>percentages_eth_zentrum <span class="ot">&lt;-</span> <span class="fu">round</span>(counts_eth_zentrum<span class="sc">/</span><span class="fu">sum</span>(counts_eth_zentrum)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>counts_eth_hönggerberg <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_processed<span class="sc">$</span>recycling_ETH_Hönggerberg)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>percentages_eth_hönggerberg <span class="ot">&lt;-</span> <span class="fu">round</span>(counts_eth_hönggerberg<span class="sc">/</span><span class="fu">sum</span>(counts_eth_hönggerberg)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>survey_processed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/processed/survey_processed.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>counts_eth_zentrum <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_processed<span class="sc">$</span>recycling_ETH_Zentrum)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>percentages_eth_zentrum <span class="ot">&lt;-</span> <span class="fu">round</span>(counts_eth_zentrum<span class="sc">/</span><span class="fu">sum</span>(counts_eth_zentrum)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>counts_eth_hönggerberg <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_processed<span class="sc">$</span>recycling_ETH_Hönggerberg)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>percentages_eth_hönggerberg <span class="ot">&lt;-</span> <span class="fu">round</span>(counts_eth_hönggerberg<span class="sc">/</span><span class="fu">sum</span>(counts_eth_hönggerberg)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>recyclingrate_eth_zentrum <span class="ot">&lt;-</span> <span class="fu">pie</span>(counts_eth_zentrum, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">names</span>(counts_eth_zentrum), <span class="st">" ("</span>, percentages_eth_zentrum, <span class="st">"%)"</span>),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"red"</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"On campus recyclingrate: ETH-Zentrum"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>recyclingrate_eth_zentrum <span class="ot">&lt;-</span> <span class="fu">pie</span>(counts_eth_zentrum, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">names</span>(counts_eth_zentrum), <span class="st">" ("</span>, percentages_eth_zentrum, <span class="st">"%)"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"On campus recyclingrate: ETH-Zentrum"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-zentrum" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -219,10 +202,10 @@ Figure&nbsp;1: Percentage of people recycling on the ETH-Zentrum campus
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>recyclingrate_eth_hönggerberg <span class="ot">&lt;-</span> <span class="fu">pie</span>(counts_eth_hönggerberg, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">names</span>(counts_eth_hönggerberg), <span class="st">" ("</span>, percentages_eth_hönggerberg, <span class="st">"%)"</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"red"</span>),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"On campus recyclingrate: ETH-Hönggerberg"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>recyclingrate_eth_hönggerberg <span class="ot">&lt;-</span> <span class="fu">pie</span>(counts_eth_hönggerberg, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">names</span>(counts_eth_hönggerberg), <span class="st">" ("</span>, percentages_eth_hönggerberg, <span class="st">"%)"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"On campus recyclingrate: ETH-Hönggerberg"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-hönggerberg" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -241,13 +224,13 @@ Figure&nbsp;2: Percentage of people recycling on the ETH-Hönggerberg campus
 <h2 class="anchored" data-anchor-id="what-do-they-recycle">What do they recycle?</h2>
 <p>The participants recycle various materials on campus, namely PET, cardboard, paper, glass, and aluminum. In <a href="#fig-material" class="quarto-xref">Figure&nbsp;3</a> one can see the most used recycled material which is ALU.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>most_recycled_Zentrum <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/processed/most_recycled_Zentrum"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> most_recycled_Zentrum,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> most_recycled_material_ETH_Zentrum)) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">"What material is mostly recycled on the ETH-Zentrum campus?"</span>, <span class="at">x =</span> <span class="st">"material"</span>, <span class="at">y =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>most_recycled_Zentrum <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/processed/most_recycled_Zentrum"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> most_recycled_Zentrum,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> most_recycled_material_ETH_Zentrum)) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">"What material is mostly recycled on the ETH-Zentrum campus?"</span>, <span class="at">x =</span> <span class="st">"material"</span>, <span class="at">y =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-material" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -264,33 +247,33 @@ Figure&nbsp;3: most recycled materials on the ETH-Zentrum campus
 </section>
 <section id="how-happy-are-the-people-on-campus-about-the-given-infrastructure" class="level2">
 <h2 class="anchored" data-anchor-id="how-happy-are-the-people-on-campus-about-the-given-infrastructure">How happy are the people on campus about the given infrastructure?</h2>
-<p>In the end of the survey the participants were asked to give a rating from 1-10 on how happy they are with the given infrastructure. As seen in <a href="#tbl-satisfaction" class="quarto-xref">Table&nbsp;1</a> the participants are quite happy with the given infrastructure. The infrastructure on Höngerberg was rated a bit higher but also had not to much participants for a reliable conclusion.</p>
+<p>In the end of the survey the participants were asked to give a rating from 1-10 on how happy they are with the given infrastructure. As seen in <a href="#tbl-satisfaction" class="quarto-xref">Table&nbsp;1</a> the participants are quite happy with the given infrastructure. The infrastructure on Hönggerberg was rated a bit higher but also had not to much participants for a reliable conclusion.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>survey_processed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/processed/survey_processed.csv"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mean_satisfaction_zentrum <span class="ot">&lt;-</span>survey_processed <span class="sc">|&gt;</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(satisfaction_ETH_Zentrum))  <span class="sc">|&gt;</span> </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(campus) <span class="sc">|&gt;</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean =</span> <span class="fu">mean</span>(satisfaction_ETH_Zentrum)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>mean_satisfaction_hönggerberg <span class="ot">&lt;-</span>survey_processed <span class="sc">|&gt;</span> </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(satisfaction_ETH_Hönggerberg))  <span class="sc">|&gt;</span> </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(campus) <span class="sc">|&gt;</span> </span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean =</span> <span class="fu">mean</span>(satisfaction_ETH_Hönggerberg)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>satisfaction <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mean_satisfaction_hönggerberg,mean_satisfaction_zentrum)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>satisfaction <span class="sc">|&gt;</span> </span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(satisfaction, <span class="st">"data/final/tbl-satisfaction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>survey_processed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/processed/survey_processed.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mean_satisfaction_zentrum <span class="ot">&lt;-</span>survey_processed <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(satisfaction_ETH_Zentrum))  <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(campus) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">count=</span> <span class="fu">n</span>(),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean =</span> <span class="fu">mean</span>(satisfaction_ETH_Zentrum)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>mean_satisfaction_hönggerberg <span class="ot">&lt;-</span>survey_processed <span class="sc">|&gt;</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(satisfaction_ETH_Hönggerberg))  <span class="sc">|&gt;</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(campus) <span class="sc">|&gt;</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean =</span> <span class="fu">mean</span>(satisfaction_ETH_Hönggerberg)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>satisfaction <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mean_satisfaction_hönggerberg,mean_satisfaction_zentrum)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>satisfaction <span class="sc">|&gt;</span> </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(satisfaction, <span class="st">"data/final/tbl-satisfaction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-satisfaction" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-satisfaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -350,7 +333,7 @@ Table&nbsp;1: Mean values of the satisfaction level from 1-10 of the different c
 </ul></li>
 </ul>
 <p>Even if the participants are in general happy with the given infrastructure, they still wish that the infrastructure is expanded with more bins and more awareness and visability of what is possible to recycle. The lack of visibility was also was also the main suggestion for improvement from <span class="citation" data-cites="kelly2006universityb">Kelly et al. (<a href="#ref-kelly2006universityb" role="doc-biblioref">2006</a>)</span></p>
-<p><span class="citation" data-cites="10">(<a href="#ref-10" role="doc-biblioref">Save, n.d.</a>)</span>cit also describes a 10 steps Method for a improvement on campus recycling as following:</p>
+<p><span class="citation" data-cites="10">Save (<a href="#ref-10" role="doc-biblioref">n.d.</a>)</span> also describes a 10 steps Method for a improvement on campus recycling as following:</p>
 <ol type="1">
 <li><p>Determine your benchmark by doing a waste audit.</p></li>
 <li><p>Standardize your program – use the same bins, same graphics and same colors across campus.</p></li>
