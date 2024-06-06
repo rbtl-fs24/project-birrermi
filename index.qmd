@@ -17,7 +17,7 @@ license: "CC BY"
 citation: 
   container-title: My Blog
   url: https://www.example.com
-bibliography: birrermi.bib
+bibliography: bibliography.bib
 csl: apa.csl
 editor: visual
 ---
@@ -32,7 +32,7 @@ library(ggthemes)
 
 # Introduction
 
-Switzerland is one of the leading country in terms of waste per capita with an high waste of over 700kg per capita. Despite this big waste production the recyclingrate increased sevenfold over the past 50 years
+Switzerland is one of the leading country in terms of waste per capita with an high waste of over 700kg per capita. Despite this big waste production the recyclingrate increased sevenfold over the past 50 years [@misicka2020how]
 
 This study aims to get insights of the recycling behavior of peoples visiting the ETH-campuses. By understanding the extent to which visitors utilize the provided recycling infrastructure and how satisfied they are with the existing infrastructure, we can identify potential areas for improvement. Furthermore, the study seeks to uncover the types of materials commonly recycled on campus, providing valuable insights into the recycling habits and preferences of the campus community.
 
@@ -98,9 +98,6 @@ recyclingrate_eth_hönggerberg <- pie(counts_eth_hönggerberg,
     labels = paste0(names(counts_eth_hönggerberg), " (", percentages_eth_hönggerberg, "%)"),
     col = c("green", "red"),
     main = "On campus recyclingrate: ETH-Hönggerberg") 
-  
-
-
 ```
 
 ## What do they recycle?
@@ -194,9 +191,9 @@ For improvements the participants suggested the following statements:
 
     -   no improvements necessary
 
-Even if the participants are in general happy with the given infrastructure, they still wish that the infrastructure is expanded with more bins and more awareness and visability of what is possible to recycle. The lack of visibility was also was also the main suggestion for improvement from [@kelly2006universitya]
+Even if the participants are in general happy with the given infrastructure, they still wish that the infrastructure is expanded with more bins and more awareness and visability of what is possible to recycle. The lack of visibility was also was also the main suggestion for improvement from @kelly2006universityb
 
-cit also describes a 10 steps Method for a improvement on campus recycling as following:
+[@10]cit also describes a 10 steps Method for a improvement on campus recycling as following:
 
 1.  Determine your benchmark by doing a waste audit.
 
