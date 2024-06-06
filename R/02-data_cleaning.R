@@ -64,4 +64,9 @@ survey_processed <- survey_processed |>
   mutate(most_recycled_material_ETH_Zentrum = na_if(most_recycled_material_ETH_Zentrum, "this is to see if longer answers are accepted, also, 14"))
 write_csv(survey_processed, "data/processed/survey_processed.csv" )
 
-
+#make seperate lists for most recycled materials Zentrum an Hönggerberg
+  #only zentrum and remove people who dont recycle on campus
+most_recycled_Zentrum <- survey_processed |> 
+  filter(campus != "ETH-Höngerberg" & !is.na(most_recycled_material_ETH_Zentrum))
+write_csv(most_recycled_Zentrum, "data/processed/most_recycled_Zentrum")
+ 

@@ -26,6 +26,8 @@ editor: visual
 
 library(tidyverse)
 library(dplyr)
+library(gt)
+library(ggthemes)
 ```
 
 # Introduction
@@ -38,9 +40,11 @@ The data was collected through a Google Forms questionnaire distributed to stude
 
 # Results
 
+There were a total of 17 participants in the survey, from which 13 visit mainly the Zentrum campus and 4 visitting the Hönggerberg campus.
+
 ## Do people recycle on campus?
 
-The percentage of participants that recycles on campus is high as seen in fig... for the ETH-Zentrum campus and fig ...for the ETH-Hönggerberg campus.
+The percentage of participants that recycles on campus is high as seen in @fig-zentrum for the ETH-Zentrum campus and in @fig-hönggerberg the ETH-Hönggerberg campus.
 
 The contribution on recycling is slightly higher on the Zentrum-campus.
 
@@ -63,39 +67,77 @@ survey_processed <- read.csv("data/processed/survey_processed.csv")
 counts_eth_zentrum <- table(survey_processed$recycling_ETH_Zentrum)
 percentages_eth_zentrum <- round(counts_eth_zentrum/sum(counts_eth_zentrum)*100, 1)
 
+counts_eth_hönggerberg <- table(survey_processed$recycling_ETH_Hönggerberg)
+percentages_eth_hönggerberg <- round(counts_eth_hönggerberg/sum(counts_eth_hönggerberg)*100, 1)
+```
+
+```{r}
+#| fig-width: 5
+#| fig-asp: 1
+#| fig-cap: Percentage of people recycling on the ETH-Zentrum campus
+#| label: fig-zentrum
+
 recyclingrate_eth_zentrum <- pie(counts_eth_zentrum, 
     labels = paste0(names(counts_eth_zentrum), " (", percentages_eth_zentrum, "%)"),
     col = c("green", "red"),
     main = "On campus recyclingrate: ETH-Zentrum")
 
 
-counts_eth_hönggerberg <- table(survey_processed$recycling_ETH_Hönggerberg)
-percentages_eth_hönggerberg <- round(counts_eth_hönggerberg/sum(counts_eth_hönggerberg)*100, 1)
+```
+
+```{r}
+#| fig-width: 5
+#| fig-asp: 1
+#| fig-cap: Percentage of people recycling on the ETH-Hönggerberg campus
+#| label: fig-hönggerberg
+
 
 recyclingrate_eth_hönggerberg <- pie(counts_eth_hönggerberg, 
     labels = paste0(names(counts_eth_hönggerberg), " (", percentages_eth_hönggerberg, "%)"),
     col = c("green", "red"),
-    main = "On campus recyclingrate: ETH-Hönggerberg")
+    main = "On campus recyclingrate: ETH-Hönggerberg") 
+  
+
+
 ```
 
 ## What do they recycle?
 
+The participants recycle various materials on campus, namely PET, cardboard, paper, glass, and aluminum. In @fig-material one can see the most used recycled material which is ALU.
+
 ```{r}
-survey_processed <- read.csv("data/processed/survey_processed.csv")
 
+```
 
-ggplot(data = survey_processed,
+-   labs(title= "What material is mostlyrecycled on the ETH-Zentrum campus?", x = "material", y = "count") +
+
+```{r}
+#| fig-width: 6
+#| fig-asp: 0.8
+#| fig-cap: most recycled materials on the ETH-Zentrum campus
+#| label: fig-material
+
+most_recycled_Zentrum <- read.csv("data/processed/most_recycled_Zentrum")
+
+ ggplot(data = most_recycled_Zentrum,
        mapping = aes(x = most_recycled_material_ETH_Zentrum)) +
-  geom_bar()
+  geom_bar() +
+   labs(title= "What material is mostly recycled on the ETH-Zentrum campus?", x = "material", y = "count") +
+  scale_color_colorblind()
+ 
+
 ```
 
 ## How happy are the people on campus about the given infrastructure?
 
-in the end of the survey the participants were asked to give a rating from 1-10 on how happy they are with the given infrastructure. As seen in ... the participants are quite happy with the given infrastructure. The infrastructure on Höngerberg was rated a bit higher but also had not to much participants for a reliable conclusion.
+in the end of the survey the participants were asked to give a rating from 1-10 on how happy they are with the given infrastructure. As seen in @tbl-satisfaction the participants are quite happy with the given infrastructure. The infrastructure on Höngerberg was rated a bit higher but also had not to much participants for a reliable conclusion.
 
 ```{r}
+#| label: tbl-satisfaction
+#| tbl-cap: Mean values of the satisfaction level from 1-10 of the different campuses.
 
 survey_processed <- read.csv("data/processed/survey_processed.csv")
+
 mean_satisfaction_zentrum <-survey_processed |> 
   filter(!is.na(satisfaction_ETH_Zentrum))  |> 
     group_by(campus) |> 
@@ -112,7 +154,9 @@ mean_satisfaction_hönggerberg <-survey_processed |>
         mean = mean(satisfaction_ETH_Hönggerberg)
         )
 
+
 satisfaction <- bind_rows(mean_satisfaction_hönggerberg,mean_satisfaction_zentrum)
+
 
 satisfaction |> 
 knitr::kable(digits = 0)
