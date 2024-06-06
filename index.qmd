@@ -15,8 +15,8 @@ abstract:
   And how happy are they with the given recycling infrastructure?
 license: "CC BY"
 citation: 
-  container-title: My Blog
-  url: https://www.example.com
+  container-title: github-page
+  url: https://rbtl-fs24.github.io/project-birrermi/
 bibliography: bibliography.bib
 csl: apa.csl
 editor: visual
